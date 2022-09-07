@@ -62,7 +62,7 @@ class Kunjungan extends BaseController
         $data = $this->model->join('user', 'user.id_user = kunjungan.id_user')
             ->join('atm_lokasi', 'atm_lokasi.id_atm_lokasi = kunjungan.id_atm_lokasi')
             ->join('atm_kunjungan', 'atm_kunjungan.id_atm_kunjungan = kunjungan.id_atm_kunjungan')
-
+            ->where('id_kunjungan', $id)
             ->findAll();
         if ($data) {
             foreach ($data as $key) {
@@ -97,7 +97,7 @@ class Kunjungan extends BaseController
     public function create()
     {        // user
         $id_user = $this->request->getVar('id_user');
-        $isExists = $this->modelAtmKunjungan->where('id_user', $id_user)->findAll();
+        $isExists = $this->modelUser->where('id_user', $id_user)->findAll();
         if (!$isExists) {
             $response = [
                 'code' => 401,

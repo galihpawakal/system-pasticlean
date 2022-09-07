@@ -25,7 +25,7 @@ class RoomProblemAttachModel extends Model
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_room_problem_attach';
-    protected $updatedField  = 'updated_rooom_problem_attach';
+    protected $updatedField  = 'updated_room_problem_attach';
     protected $deletedField  = 'deleted_room_problem_attach';
 
     // Validation

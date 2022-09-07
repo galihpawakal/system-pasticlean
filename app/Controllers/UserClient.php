@@ -52,7 +52,7 @@ class UserClient extends BaseController
     public function show($id = null)
     {
         $data = $this->model->join('auth_group', 'auth_group.id_auth_group = user_client.id_auth_group')
-            ->join('client_region_3', 'client_region_3.kd_client_region_3 = user_client.kd_client_region_3')
+            ->join('client_region_3', 'client_region_3.kd_client_region_3 = user_client.kd_client_region_3')->where('id_user_client', $id)
             ->findAll();
         if ($data) {
             foreach ($data as $key) {
@@ -142,8 +142,6 @@ class UserClient extends BaseController
             'id_user_client' => $isExists[0]['id_user_client'],
             'nama_auth_group' => $isExists[0]['nama_auth_group'],
             'nama_client_region_3' => $isExists[0]['nama_client_region_3'],
-            'nama_auth_group_client' => $isExists[0]['nama_auth_group_client'],
-            'telegram_user_client' => $isExists[0]['telegram_user_client'],
             'noted_user_client' => $isExists[0]['noted_user_client'],
             'created_user_client' => $isExists[0]['created_user_client'],
             'updated_user_client' => $isExists[0]['updated_user_client'],

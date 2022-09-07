@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class TicketPartModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'tiket_part';
-    protected $primaryKey       = 'id_tiket_part';
+    protected $table            = 'ticket_part';
+    protected $primaryKey       = 'id_ticket_part';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';

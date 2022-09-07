@@ -30,7 +30,7 @@ class KunjunganAttach extends BaseController
                 $result[] = [
                     'id_kunjungan_attach' => $key['id_kunjungan_attach'],
                     'nama_user' => $key['nama_user'],
-                    'nama_kunjungan' => $key['nama_kunjungan'],
+                    'petugas_kunjungan' => $key['petugas_kunjungan'],
                     'file_kunjungan_attach' => $key['file_kunjungan_attach'],
                     'noted_kunjungan_attach' => $key['noted_kunjungan_attach'],
                     'created_kunjungan_attach' => $key['created_kunjungan_attach'],
@@ -53,14 +53,14 @@ class KunjunganAttach extends BaseController
     public function show($id = null)
     {
         $data = $this->model->join('user', 'user.id_user = kunjungan_attach.id_user')
-            ->join('kunjungan', 'kunjungan.id_kunjungan = kunjungan_attach.id_kunjungan')
+            ->join('kunjungan', 'kunjungan.id_kunjungan = kunjungan_attach.id_kunjungan')->where('id_kunjungan_attach', $id)
             ->findAll();
         if ($data) {
             foreach ($data as $key) {
                 $result[] = [
                     'id_kunjungan_attach' => $key['id_kunjungan_attach'],
                     'nama_user' => $key['nama_user'],
-                    'nama_kunjungan' => $key['nama_kunjungan'],
+                    'petugas_kunjungan' => $key['petugas_kunjungan'],
                     'file_kunjungan_attach' => $key['file_kunjungan_attach'],
                     'noted_kunjungan_attach' => $key['noted_kunjungan_attach'],
                     'created_kunjungan_attach' => $key['created_kunjungan_attach'],
@@ -91,23 +91,21 @@ class KunjunganAttach extends BaseController
             $response = [
                 'code' => 401,
                 'status' => 'error',
-                'data' => 'data not found user kunjungan'
+                'data' => 'data not found user'
             ];
             return $this->respond($response);
         }
-        //atm lokasi
+        // atm kunjungan
         $id_kunjungan = $this->request->getVar('id_kunjungan');
         $isExists = $this->modelKunjungan->where('id_kunjungan', $id_kunjungan)->findAll();
         if (!$isExists) {
             $response = [
                 'code' => 401,
                 'status' => 'error',
-                'data' => 'data not found lokasi'
+                'data' => 'data not found kunjungan'
             ];
             return $this->respond($response);
         }
-
-
 
         $data = $this->request->getPost();
         $save = $this->model->save($data);
@@ -150,7 +148,7 @@ class KunjunganAttach extends BaseController
         $result = [
             'id_kunjungan_attach' => $isExists[0]['id_kunjungan_attach'],
             'nama_user' => $isExists[0]['nama_user'],
-            'nama_kunjungan' => $isExists[0]['nama_kunjungan'],
+            'petugas_kunjungan' => $isExists[0]['petugas_kunjungan'],
             'file_kunjungan_attach' => $isExists[0]['file_kunjungan_attach'],
             'noted_kunjungan_attach' => $isExists[0]['noted_kunjungan_attach'],
             'created_kunjungan_attach' => $isExists[0]['created_kunjungan_attach'],

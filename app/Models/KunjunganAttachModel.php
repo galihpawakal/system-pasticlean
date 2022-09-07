@@ -9,7 +9,7 @@ class KunjunganAttachModel extends Model
     protected $DBGroup          = 'default';
     protected $table            = 'kunjungan_attach';
     protected $primaryKey       = 'id_kunjungan_attach';
-    protected $ForeignKey       = ['id_user', 'id_atm_kunjungan', 'id_atm_lokasi'];
+    protected $ForeignKey       = ['id_user', 'id_atm_kunjungan'];
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -17,8 +17,7 @@ class KunjunganAttachModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'id_user',
-        'id_atm_kunjungan',
-        'id_atm_lokasi',
+        'id_kunjungan',
         'file_kunjungan_attach',
         'noted_kunjungan_attach',
     ];

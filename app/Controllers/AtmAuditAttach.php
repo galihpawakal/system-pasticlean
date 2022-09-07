@@ -30,7 +30,7 @@ class AtmAuditAttach extends BaseController
                 $result[] = [
                     'id_atm_audit_attach' => $key['id_atm_audit_attach'],
                     'nama_user' => $key['nama_user'],
-                    'nama_atm_audit' => $key['nama_atm_audit'],
+                    'pelapor_atm_audit' => $key['pelapor_atm_audit'],
                     'file_atm_audit_attach' => $key['file_atm_audit_attach'],
                     'noted_atm_audit_attach' => $key['noted_atm_audit_attach'],
                     'created_atm_audit_attach' => $key['created_atm_audit_attach'],
@@ -61,7 +61,7 @@ class AtmAuditAttach extends BaseController
                 $result[] = [
                     'id_atm_audit_attach' => $key['id_atm_audit_attach'],
                     'nama_user' => $key['nama_user'],
-                    'nama_atm_audit' => $key['nama_atm_audit'],
+                    'pelapor_atm_audit' => $key['pelapor_atm_audit'],
                     'file_atm_audit_attach' => $key['file_atm_audit_attach'],
                     'noted_atm_audit_attach' => $key['noted_atm_audit_attach'],
                     'created_atm_audit_attach' => $key['created_atm_audit_attach'],
@@ -130,7 +130,8 @@ class AtmAuditAttach extends BaseController
         $data = $this->request->getRawInput();
         $isExists = $this->model
             ->join('user', 'user.id_user = atm_audit_attach.id_user')
-            ->join('atm_audit', 'atm_audit.id_atm_audit = atm_audit_attach.id_atm_audit')->find();
+            ->join('atm_audit', 'atm_audit.id_atm_audit = atm_audit_attach.id_atm_audit')
+            ->where('id_atm_audit_attach', $id)->find();
         if (!$isExists) {
             $response = [
                 'code' => 402,
@@ -142,11 +143,12 @@ class AtmAuditAttach extends BaseController
         $update = $this->model->update($id, $data);
         $isExists = $this->model
             ->join('user', 'user.id_user = atm_audit_attach.id_user')
-            ->join('atm_audit', 'atm_audit.id_atm_audit = atm_audit_attach.id_atm_audit')->find();
+            ->join('atm_audit', 'atm_audit.id_atm_audit = atm_audit_attach.id_atm_audit')
+            ->where('id_atm_audit_attach', $id)->find();
         $result = [
             'id_atm_audit_attach' => $isExists[0]['id_atm_audit_attach'],
             'nama_user' => $isExists[0]['nama_user'],
-            'nama_atm_audit' => $isExists[0]['nama_atm_audit'],
+            'pelapor_atm_audit' => $isExists[0]['pelapor_atm_audit'],
             'file_atm_audit_attach' => $isExists[0]['file_atm_audit_attach'],
             'noted_atm_audit_attach' => $isExists[0]['noted_atm_audit_attach'],
             'created_atm_audit_attach' => $isExists[0]['created_atm_audit_attach'],

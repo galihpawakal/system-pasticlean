@@ -53,6 +53,7 @@ class UserPengelola extends BaseController
     {
         $data = $this->model->join('auth_group', 'auth_group.id_auth_group = user_pengelola.id_auth_group')
             ->join('pengelola_region_3', 'pengelola_region_3.kd_pengelola_region_3 = user_pengelola.kd_pengelola_region_3')
+            ->where('id_user_pengelola', $id)
             ->findAll();
         if ($data) {
             foreach ($data as $key) {
@@ -142,8 +143,6 @@ class UserPengelola extends BaseController
             'id_user_pengelola' => $isExists[0]['id_user_pengelola'],
             'nama_auth_group' => $isExists[0]['nama_auth_group'],
             'nama_pengelola_region_3' => $isExists[0]['nama_pengelola_region_3'],
-            'nama_user_pengelola' => $isExists[0]['nama_user_pengelola'],
-            'telegram_user_pengelola' => $isExists[0]['telegram_user_pengelola'],
             'noted_user_pengelola' => $isExists[0]['noted_user_pengelola'],
             'created_user_pengelola' => $isExists[0]['created_user_pengelola'],
             'updated_user_pengelola' => $isExists[0]['updated_user_pengelola'],

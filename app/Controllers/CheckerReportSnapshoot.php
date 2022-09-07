@@ -30,7 +30,7 @@ class CheckerReportSnapshoot extends BaseController
             foreach ($data as $key) {
                 $result[] = [
                     'id_checker_report_snapshoot' => $key['id_checker_report_snapshoot'],
-                    'nama_checker_report' => $key['nama_checker_report'],
+                    'petugas_checker_report' => $key['petugas_checker_report'],
                     'nama_snapshoot_checker' => $key['nama_snapshoot_checker'],
                     'foto_checker_report_snapshoot' => $key['foto_checker_report_snapshoot'],
                     'noted_checker_report_snapshoot' => $key['noted_checker_report_snapshoot'],
@@ -62,7 +62,7 @@ class CheckerReportSnapshoot extends BaseController
             foreach ($data as $key) {
                 $result[] =  [
                     'id_checker_report_snapshoot' => $key['id_checker_report_snapshoot'],
-                    'nama_checker_report' => $key['nama_checker_report'],
+                    'petugas_checker_report' => $key['petugas_checker_report'],
                     'nama_snapshoot_checker' => $key['nama_snapshoot_checker'],
                     'foto_checker_report_snapshoot' => $key['foto_checker_report_snapshoot'],
                     'noted_checker_report_snapshoot' => $key['noted_checker_report_snapshoot'],
@@ -149,7 +149,7 @@ class CheckerReportSnapshoot extends BaseController
             ->where('id_checker_report_snapshoot', $id)->find();
         $result = [
             'id_checker_report_snapshoot' => $isExists[0]['id_checker_report_snapshoot'],
-            'nama_checker_report' => $isExists[0]['nama_checker_report'],
+            'petugas_checker_report' => $isExists[0]['petugas_checker_report'],
             'nama_snapshoot_checker' => $isExists[0]['nama_snapshoot_checker'],
             'foto_checker_report_snapshoot' => $isExists[0]['foto_checker_report_snapshoot'],
             'noted_checker_report_snapshoot' => $isExists[0]['noted_checker_report_snapshoot'],

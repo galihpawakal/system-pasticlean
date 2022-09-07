@@ -25,9 +25,9 @@ class CheckerReport extends BaseController
     public function index()
     {
         $data = $this->model
-            ->join('atm_checker', 'atm_checker.id_atm_checker = checker_report.id_atm_checker')
+            ->join('user', 'user.id_user = checker_report.id_user')
             ->join('atm_lokasi', 'atm_lokasi.id_atm_lokasi = checker_report.id_atm_lokasi')
-            ->join('id_user', 'id_user.id_id_user = checker_report.id_id_user')
+            ->join('atm_checker', 'atm_checker.id_atm_checker = checker_report.id_atm_checker')
             ->findAll();
         if ($data) {
             foreach ($data as $key) {
@@ -62,7 +62,7 @@ class CheckerReport extends BaseController
         $data = $this->model
             ->join('atm_checker', 'atm_checker.id_atm_checker = checker_report.id_atm_checker')
             ->join('atm_lokasi', 'atm_lokasi.id_atm_lokasi = checker_report.id_atm_lokasi')
-            ->join('id_user', 'id_user.id_id_user = checker_report.id_id_user')
+            ->join('user', 'user.id_user = checker_report.id_user')
             ->where('id_checker_report', $id)->findAll();
         if ($data) {
 
@@ -153,7 +153,7 @@ class CheckerReport extends BaseController
         $isExists = $this->model
             ->join('atm_checker', 'atm_checker.id_atm_checker = checker_report.id_atm_checker')
             ->join('atm_lokasi', 'atm_lokasi.id_atm_lokasi = checker_report.id_atm_lokasi')
-            ->join('id_user', 'id_user.id_id_user = checker_report.id_id_user')
+            ->join('user', 'user.id_user = checker_report.id_user')
             ->where('id_checker_report', $id)->find();
         if (!$isExists) {
             $response = [
@@ -167,7 +167,7 @@ class CheckerReport extends BaseController
         $isExists = $this->model
             ->join('atm_checker', 'atm_checker.id_atm_checker = checker_report.id_atm_checker')
             ->join('atm_lokasi', 'atm_lokasi.id_atm_lokasi = checker_report.id_atm_lokasi')
-            ->join('id_user', 'id_user.id_id_user = checker_report.id_id_user')
+            ->join('user', 'user.id_user = checker_report.id_user')
             ->where('id_checker_report', $id)->find();
         $result = [
             'id_checker_report' => $isExists[0]['id_checker_report'],

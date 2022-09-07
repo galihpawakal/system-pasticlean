@@ -30,8 +30,7 @@ class SnapshootCheckerModel extends Model
     // Validation
     protected $validationRules      = [
         'id_atm_checker' => 'required',
-        'nama_checklist_checker' => 'required',
-        'status_foto_checklist_checker' => 'required'
+        'nama_snapshoot_checker' => 'required',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

@@ -120,7 +120,9 @@ class ClientRegion2 extends BaseController
     public function update($id = null)
     {
         $data = $this->request->getRawInput();
-        $isExists = $this->model->join('client_region_1', 'client_region_1.kd_client_region_1 = client_region_2.kd_client_region_1')->find();
+        $isExists = $this->model->join('client_region_1', 'client_region_1.kd_client_region_1 = client_region_2.kd_client_region_1')
+            ->join('client', 'client.kd_client = client_region_1.kd_client')
+            ->find();
         if (!$isExists) {
             $response = [
                 'code' => 402,
@@ -130,9 +132,12 @@ class ClientRegion2 extends BaseController
             return $this->respond($response);
         }
         $update = $this->model->update($id, $data);
-        $isExists = $this->model->join('client_region_1', 'client_region_1.kd_client_region_1 = client_region_2.kd_client_region_1')->find();
+        $isExists = $this->model->join('client_region_1', 'client_region_1.kd_client_region_1 = client_region_2.kd_client_region_1')
+            ->join('client', 'client.kd_client = client_region_1.kd_client')
+            ->find();
         $result = [
             'kd_client_region_2' => $isExists[0]['kd_client_region_2'],
+            'nama_client' => $isExists[0]['nama_client'],
             'nama_client_region_1' => $isExists[0]['nama_client_region_1'],
             'nama_client_region_2' => $isExists[0]['nama_client_region_2'],
             'telegram_client_region_2' => $isExists[0]['telegram_client_region_2'],

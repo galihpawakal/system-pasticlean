@@ -30,7 +30,7 @@ class TicketSnapshootModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'foto_ticket_noted' => 'required',
+        'foto_ticket_snapshoot' => 'required',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

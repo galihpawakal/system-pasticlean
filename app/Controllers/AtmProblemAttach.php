@@ -30,7 +30,7 @@ class AtmProblemAttach extends BaseController
                 $result[] = [
                     'id_atm_problem_attach' => $key['id_atm_problem_attach'],
                     'nama_user' => $key['nama_user'],
-                    'nama_atm_problem' => $key['nama_atm_problem'],
+                    'pelapor_atm_problem' => $key['pelapor_atm_problem'],
                     'file_atm_problem_attach' => $key['file_atm_problem_attach'],
                     'noted_atm_problem_attach' => $key['noted_atm_problem_attach'],
                     'created_atm_problem_attach' => $key['created_atm_problem_attach'],
@@ -61,7 +61,7 @@ class AtmProblemAttach extends BaseController
                 $result[] = [
                     'id_atm_problem_attach' => $key['id_atm_problem_attach'],
                     'nama_user' => $key['nama_user'],
-                    'nama_atm_problem' => $key['nama_atm_problem'],
+                    'pelapor_atm_problem' => $key['pelapor_atm_problem'],
                     'file_atm_problem_attach' => $key['file_atm_problem_attach'],
                     'noted_atm_problem_attach' => $key['noted_atm_problem_attach'],
                     'created_atm_problem_attach' => $key['created_atm_problem_attach'],
@@ -130,7 +130,8 @@ class AtmProblemAttach extends BaseController
         $data = $this->request->getRawInput();
         $isExists = $this->model
             ->join('user', 'user.id_user = atm_problem_attach.id_user')
-            ->join('atm_problem', 'atm_problem.id_atm_problem = atm_problem_attach.id_atm_problem')->find();
+            ->join('atm_problem', 'atm_problem.id_atm_problem = atm_problem_attach.id_atm_problem')
+            ->where('id_atm_problem_attach', $id)->find();
         if (!$isExists) {
             $response = [
                 'code' => 402,
@@ -142,11 +143,11 @@ class AtmProblemAttach extends BaseController
         $update = $this->model->update($id, $data);
         $isExists = $this->model
             ->join('user', 'user.id_user = atm_problem_attach.id_user')
-            ->join('atm_problem', 'atm_problem.id_atm_problem = atm_problem_attach.id_atm_problem')->find();
+            ->join('atm_problem', 'atm_problem.id_atm_problem = atm_problem_attach.id_atm_problem')->where('id_atm_problem_attach', $id)->find();
         $result = [
             'id_atm_problem_attach' => $isExists[0]['id_atm_problem_attach'],
             'nama_user' => $isExists[0]['nama_user'],
-            'nama_atm_problem' => $isExists[0]['nama_atm_problem'],
+            'pelapor_atm_problem' => $isExists[0]['pelapor_atm_problem'],
             'file_atm_problem_attach' => $isExists[0]['file_atm_problem_attach'],
             'noted_atm_problem_attach' => $isExists[0]['noted_atm_problem_attach'],
             'created_atm_problem_attach' => $isExists[0]['created_atm_problem_attach'],

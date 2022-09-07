@@ -30,7 +30,7 @@ class CheckerReportAttach extends BaseController
             foreach ($data as $key) {
                 $result[] = [
                     'id_checker_report_attach' => $key['id_checker_report_attach'],
-                    'nama_checker_report' => $key['nama_checker_report'],
+                    'petugas_checker_report' => $key['petugas_checker_report'],
                     'nama_user' => $key['nama_user'],
                     'file_checker_report_attach' => $key['file_checker_report_attach'],
                     'noted_checker_report_attach' => $key['noted_checker_report_attach'],
@@ -62,7 +62,7 @@ class CheckerReportAttach extends BaseController
             foreach ($data as $key) {
                 $result[] =  [
                     'id_checker_report_attach' => $key['id_checker_report_attach'],
-                    'nama_checker_report' => $key['nama_checker_report'],
+                    'petugas_checker_report' => $key['petugas_checker_report'],
                     'nama_user' => $key['nama_user'],
                     'file_checker_report_attach' => $key['file_checker_report_attach'],
                     'noted_checker_report_attach' => $key['noted_checker_report_attach'],
@@ -149,7 +149,7 @@ class CheckerReportAttach extends BaseController
             ->where('id_checker_report_attach', $id)->find();
         $result = [
             'id_checker_report_attach' => $isExists[0]['id_checker_report_attach'],
-            'nama_checker_report' => $isExists[0]['nama_checker_report'],
+            'petugas_checker_report' => $isExists[0]['petugas_checker_report'],
             'nama_user' => $isExists[0]['nama_user'],
             'file_checker_report_attach' => $isExists[0]['file_checker_report_attach'],
             'noted_checker_report_attach' => $isExists[0]['noted_checker_report_attach'],

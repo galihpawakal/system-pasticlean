@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\CheckerReportChecklistModel;
 use App\Models\CheckerReportModel;
 use App\Models\ChecklistCheckerModel;
-use App\Models\CheckerReportChecklistModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -30,7 +30,7 @@ class CheckerReportChecklist extends BaseController
             foreach ($data as $key) {
                 $result[] = [
                     'id_checker_report_checklist' => $key['id_checker_report_checklist'],
-                    'nama_checker_report' => $key['nama_checker_report'],
+                    'petugas_checker_report' => $key['petugas_checker_report'],
                     'nama_checklist_checker' => $key['nama_checklist_checker'],
                     'status_checker_report_checklist' => $key['status_checker_report_checklist'],
                     'foto_checker_report_checklist' => $key['foto_checker_report_checklist'],
@@ -63,7 +63,7 @@ class CheckerReportChecklist extends BaseController
             foreach ($data as $key) {
                 $result[] =  [
                     'id_checker_report_checklist' => $key['id_checker_report_checklist'],
-                    'nama_checker_report' => $key['nama_checker_report'],
+                    'petugas_checker_report' => $key['petugas_checker_report'],
                     'nama_checklist_checker' => $key['nama_checklist_checker'],
                     'status_checker_report_checklist' => $key['status_checker_report_checklist'],
                     'foto_checker_report_checklist' => $key['foto_checker_report_checklist'],
@@ -151,7 +151,7 @@ class CheckerReportChecklist extends BaseController
             ->where('id_checker_report_checklist', $id)->find();
         $result = [
             'id_checker_report_checklist' => $isExists[0]['id_checker_report_checklist'],
-            'nama_checker_report' => $isExists[0]['nama_checker_report'],
+            'petugas_checker_report' => $isExists[0]['petugas_checker_report'],
             'nama_checklist_checker' => $isExists[0]['nama_checklist_checker'],
             'status_checker_report_checklist' => $isExists[0]['status_checker_report_checklist'],
             'foto_checker_report_checklist' => $isExists[0]['foto_checker_report_checklist'],
